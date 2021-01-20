@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText firstNumber, secondNumber;
     TextView output;
-    Button buttonAdd;
+    Button buttonAdd, buttonSubtract;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         secondNumber = findViewById(R.id.second_number_input);
         output = findViewById(R.id.output);
         buttonAdd = findViewById(R.id.button_add);
+        buttonSubtract = findViewById(R.id.button_subtract);
 
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,6 +31,19 @@ public class MainActivity extends AppCompatActivity {
                 addNumbers();
             }
         });
+
+        buttonSubtract.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                subtractNumbers();
+            }
+        });
+    }
+
+    private void subtractNumbers() {
+        double first = Double.parseDouble(firstNumber.getText().toString());
+        double second = Double.parseDouble(secondNumber.getText().toString());
+        output.setText(String.valueOf(first - second));
     }
 
     private void addNumbers() {
